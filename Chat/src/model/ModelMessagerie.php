@@ -8,7 +8,8 @@ class ModelMessagerie
     private $_pdo = null;
     public function __construct()
     {
-        $this->_pdo = new PDO("mysql:host=localhost;dbname=messagerie", "root", "root");
+        $database = new Base\Database();
+        $this->_pdo = $database->getPdo();
     }
     public function ajouterMessage($message)
     {
@@ -20,7 +21,7 @@ class ModelMessagerie
         $request->bindValue(":message", $message);
         $request->execute();
     }
-    public function afficherMessage()
+    public function afficherMessages()
     {
         $sql = "SELECT * FROM `message` ORDER BY id DESC LIMIT 50";
         $request = $this->_pdo->prepare($sql);

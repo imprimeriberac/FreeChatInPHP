@@ -49,6 +49,6 @@ class Control
     function verifAfficherMessage()
     {
         $model = new ModelMessagerie();
-        echo $model->afficherMessage();
+        echo $model->afficherMessages();
     }
 }
